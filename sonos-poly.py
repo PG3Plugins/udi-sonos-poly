@@ -34,6 +34,7 @@ class Controller(udi_interface.Node):
         self.poly = polyglot
         self.discovery = False
         self.Params = Custom(polyglot, 'customparams')
+        self.join_mapping = {}
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
         polyglot.subscribe(polyglot.DISCOVER, self.discover)
         polyglot.ready()
@@ -65,6 +66,7 @@ class Controller(udi_interface.Node):
 
         if self._add_manually("only_(.*)"):
             polyglot.Notices['only'] = 'Added speakers from config, skipping auto discovery.'
+            self._update_NLS()
             self.discovery = False
             return
 
@@ -80,17 +82,34 @@ class Controller(udi_interface.Node):
 
         if speakers:
             LOGGER.info('Found {} Speaker(s)'.format(len(speakers)))
+            idx = 1
             for speaker in speakers:
                 address = speaker.uid[8:22].lower()
+                self.join_mapping[idx] = speaker.player_name
                 if not polyglot.getNode(address):
                     polyglot.addNode(Speaker(polyglot,"sonosctrl", address, speaker.player_name, speaker.ip_address))
                 else:
                     LOGGER.info('Speaker {} already configured.'.format(speaker.player_name))
+                idx = idx + 1
         else:
             LOGGER.info('No Speakers found. Are they powered on?')
             polyglot.Notices['error'] = 'No speakers found. Make sure they are powered on and try Disover again.'
 
             self._add_manually("sonos_(.*)")
+
+        '''
+        After discovery, create a mapping of index to speaker name. 
+
+        Use this to update the NLS mapping and pass this mapping to
+        each speaker node.  
+
+        When a speaker executes a join() command, map the incoming
+        index to this mapping to get the speaker name that we want
+        to join with (or whatever we need to pass to the join()
+        command).
+        '''
+
+        self._update_NLS()
 
         self.discovery = False
     
@@ -98,6 +117,7 @@ class Controller(udi_interface.Node):
         # DD - Add manual nodes
         LOGGER.info('add speakers from custom parameters')
         addit = False
+        idx = 1
         #
         for param in self.Params:
             # Look for customParam starting with sonos_
@@ -128,12 +148,74 @@ class Controller(udi_interface.Node):
                     if addit:
                         sonos_name = self.get_valid_node_name(cfgd['name'])
                         sonos_ip = self.get_valid_node_name(cfgd['host'])
+                        self.join_mapping[idx] = sonos_name
                         if not polyglot.getNode(address): 
                             polyglot.addNode(Speaker(polyglot, "sonosctrl", address, sonos_name, sonos_ip))
                         else:
                             LOGGER.info('Speaker {} already configured.'.format(sonos_name))
+                        idx = idx + 1
         return addit
 
+
+    def _update_NLS(self):
+        # Open NLS file for writing
+        try:
+            LOGGER.debug('Writing new NLS file')
+            nls = open("profile/nls/en_us.txt", "w")
+        # Write base NLS
+            nls.write("# controller\n")
+            nls.write("ND-controller-NAME = Sonos Controller\n")
+            nls.write("ND-controller-ICON = GenericCtl\n")
+            nls.write("ST-ctl-ST-NAME = NodeServer Online\n")
+            nls.write("CMD-ctl-DISCOVER-NAME = Re-Discover\n")
+
+            nls.write("# Controller Status\n")
+            nls.write("CST-0 = Disconnected\n")
+            nls.write("CST-1 = Connected\n")
+            nls.write("CST-2 = Failed\n")
+
+            nls.write("# Sonos Speakers\n")
+            nls.write("ND-sonosspeaker-NAME = Sonos Speaker\n")
+            nls.write("ND-sonosspeaker-ICON = GenericRsp\n")
+            nls.write("ST-sspk-ST-NAME = Status\n")
+            nls.write("ST-sspk-SVOL-NAME = Volume\n")
+            nls.write("ST-sspk-GV1-NAME = Bass\n")
+            nls.write("ST-sspk-GV2-NAME = Treble\n")
+            nls.write("ST-sspk-GV3-NAME = Muted\n")
+
+            nls.write("CMD-sspk-PLAY-NAME = Play\n")
+            nls.write("CMD-sspk-PAUSE-NAME = Pause\n")
+            nls.write("CMD-sspk-STOP-NAME = Stop\n")
+            nls.write("CMD-sspk-PREVIOUS-NAME = Previous\n")
+            nls.write("CMD-sspk-NEXT-NAME = Next\n")
+            nls.write("CMD-sspk-MUTE-NAME = Mute\n")
+            nls.write("CMD-sspk-UNMUTE-NAME = UnMute\n")
+            nls.write("CMD-sspk-PARTYMODE-NAME = Party Mode\n")
+            nls.write("CMD-sspk-VOLUME-NAME = Volume\n")
+            nls.write("CMD-sspk-BASS-NAME = Bass\n")
+            nls.write("CMD-sspk-TREBLE-NAME = Treble\n")
+            nls.write("CMD-sspk-JOIN-NAME = Join\n")
+
+            nls.write("PLAY_MODE-0 = Playing\n")
+            nls.write("PLAY_MODE-1 = Transitioning\n")
+            nls.write("PLAY_MODE-2 = Paused\n")
+            nls.write("PLAY_MODE-3 = Stopped\n")
+
+        # Write speaker mapping
+            for s in self.join_mapping:
+                LOGGER.debug('Adding {} to NLS'.format(self.join_mapping[s]))
+                nls.write("SPEAKER-{} = {}\n".format(s, self.join_mapping[s]))
+
+        # Close NLS file
+            nls.close()
+        except:
+            LOGGER.error('Failed to write out updated NLS file.')
+
+        # update profile files
+        self.poly.updateProfile()
+
+    def getName(self, index):
+        return self.join_mapping[index]
 
     def _cmd_discover(self, control):
         self.discover()
