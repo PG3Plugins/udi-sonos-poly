@@ -62,6 +62,12 @@ class Controller(udi_interface.Node):
         self.discovery = True
         netscan = False 
         kwargs = {}
+
+        if self._add_manually("only_(.*)"):
+            polyglot.Notices['only'] = 'Added speakers from config, skipping auto discovery.'
+            self.discovery = False
+            return
+
         for netparam in self.Params:
             LOGGER.info('Starting network scan')
             match = re.match( "networks_to_scan", netparam, re.I)
@@ -84,12 +90,18 @@ class Controller(udi_interface.Node):
             LOGGER.info('No Speakers found. Are they powered on?')
             polyglot.Notices['error'] = 'No speakers found. Make sure they are powered on and try Disover again.'
 
+            self._add_manually("sonos_(.*)")
+
+        self.discovery = False
+    
+    def _add_manually(self, key):
         # DD - Add manual nodes
         LOGGER.info('add speakers from custom parameters')
+        addit = False
         #
         for param in self.Params:
             # Look for customParam starting with sonos_
-            match = re.match( "sonos_(.*)", param, re.I)
+            match = re.match( key, param, re.I)
             LOGGER.info('param={} match={}'.format(param,match))
             if match is not None:
                 # The Sonos address is everything following the sonos_
@@ -120,8 +132,9 @@ class Controller(udi_interface.Node):
                             polyglot.addNode(Speaker(polyglot, "sonosctrl", address, sonos_name, sonos_ip))
                         else:
                             LOGGER.info('Speaker {} already configured.'.format(sonos_name))
-        self.discovery = False
-    
+        return addit
+
+
     def _cmd_discover(self, control):
         self.discover()
 
