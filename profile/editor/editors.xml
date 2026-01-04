@@ -15,4 +15,7 @@
     <editor id="cst">
         <range uom="25" subset="0,1,2" nls="CST"/>
     </editor>
+    <editor id="speakers">
+        <range uom="25" min="1" max="5" nls="SPEAKER"/>
+    </editor>
 </editors>

@@ -35,3 +35,9 @@ PLAY_MODE-1 = Transitioning
 PLAY_MODE-2 = Paused
 PLAY_MODE-3 = Stopped
 
+SPEAKER-1 = Speaker 1
+SPEAKER-2 = Speaker 2
+SPEAKER-3 = Speaker 3
+SPEAKER-4 = Speaker 4
+SPEAKER-5 = Speaker 5
+

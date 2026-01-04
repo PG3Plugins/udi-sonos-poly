@@ -268,6 +268,15 @@ class Speaker(udi_interface.Node):
                 self.zone.treble = val
                 self.setDriver('GV2', val)
 
+    def _join(self, command):
+        # join to another speaker
+        try:
+            val = int(command.get('value'))
+        except:
+            LOGGER.error('join: Invalid argument')
+        else:
+            LOGGER.error('join to: {}'.format(val))
+
     drivers = [{'driver': 'GV1', 'value': 0, 'uom': '56'},
                 {'driver': 'GV2', 'value': 0, 'uom': '56'},
                 {'driver': 'SVOL', 'value': 0, 'uom': '51'},
@@ -279,6 +288,7 @@ class Speaker(udi_interface.Node):
                     'DON': _play,
                     'DOF': _pause,
                     'PAUSE': _pause,
+                    'JOIN': _join,
                     'NEXT': _next,
                     'PREVIOUS': _previous,
                     'PARTYMODE': _partymode,

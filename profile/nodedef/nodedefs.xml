@@ -35,6 +35,9 @@
                 <cmd id="TREBLE">
                     <p id="" editor="sinc" init="GV2" />
                 </cmd>
+                <cmd id="JOIN">
+                    <p id="" editor="speakers" init="" />
+                </cmd>
                 <cmd id="PLAY" />
                 <cmd id="PAUSE" />
                 <cmd id="STOP" />
