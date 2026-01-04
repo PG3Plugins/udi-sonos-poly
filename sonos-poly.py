@@ -146,7 +146,13 @@ class Controller(udi_interface.Node):
 class Speaker(udi_interface.Node):
     def __init__(self, polyglot, primary, address, name, ip):
         self.ip = ip
-        self.zone = soco.SoCo(self.ip)
+        try:
+            self.zone = soco.SoCo(self.ip)
+        except:
+            # Test code so this doesn't crash on fake speaker
+            if self.zone == None:
+                self.zone = {'volume':1, 'bass':10, 'treble':5, 'mute':False}
+
         LOGGER.info('Sonos Speaker: {}@{} Current Volume: {}'\
                     .format(name, ip, self.zone.volume))
         super().__init__(polyglot, primary, address, 'Sonos {}'.format(name))
