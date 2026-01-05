@@ -228,6 +228,7 @@ class Controller(udi_interface.Node):
 class Speaker(udi_interface.Node):
     def __init__(self, polyglot, primary, address, name, ip):
         self.ip = ip
+        self.primary = primary
         try:
             self.zone = soco.SoCo(self.ip)
         except:
@@ -357,7 +358,10 @@ class Speaker(udi_interface.Node):
         except:
             LOGGER.error('join: Invalid argument')
         else:
-            LOGGER.error('join to: {}'.format(val))
+            parent = self.poly.getNode(self.primary)
+            name = parent.getName(val)
+            LOGGER.error('join to: {} {}'.format(name, val))
+            self.zone.join(name)
 
     drivers = [{'driver': 'GV1', 'value': 0, 'uom': '56'},
                 {'driver': 'GV2', 'value': 0, 'uom': '56'},
