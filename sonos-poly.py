@@ -195,6 +195,7 @@ class Controller(udi_interface.Node):
             nls.write("CMD-sspk-BASS-NAME = Bass\n")
             nls.write("CMD-sspk-TREBLE-NAME = Treble\n")
             nls.write("CMD-sspk-JOIN-NAME = Join\n")
+            nls.write("CMD-sspk-UNJOIN-NAME = UnJoin\n")
 
             nls.write("PLAY_MODE-0 = Playing\n")
             nls.write("PLAY_MODE-1 = Transitioning\n")
@@ -367,6 +368,12 @@ class Speaker(udi_interface.Node):
             LOGGER.error('join to: {} {}'.format(address, val))
             self.zone.join(master.uid())
 
+    def _un_join(self, command):
+        try:
+            self.zone.unjoin()
+        except:
+            LOGGER.error('Failed to unjoin speaker.')
+
     drivers = [{'driver': 'GV1', 'value': 0, 'uom': '56'},
                 {'driver': 'GV2', 'value': 0, 'uom': '56'},
                 {'driver': 'SVOL', 'value': 0, 'uom': '51'},
@@ -379,6 +386,7 @@ class Speaker(udi_interface.Node):
                     'DOF': _pause,
                     'PAUSE': _pause,
                     'JOIN': _join,
+                    'UNJOIN': _un_join,
                     'NEXT': _next,
                     'PREVIOUS': _previous,
                     'PARTYMODE': _partymode,

@@ -29,6 +29,8 @@ CMD-sspk-PARTYMODE-NAME = Party Mode
 CMD-sspk-VOLUME-NAME = Volume
 CMD-sspk-BASS-NAME = Bass
 CMD-sspk-TREBLE-NAME = Treble
+CMD-sspk-JOIN-NAME = Join
+CMD-sspk-UNJOIN-NAME = UnJoin
 
 PLAY_MODE-0 = Playing
 PLAY_MODE-1 = Transitioning

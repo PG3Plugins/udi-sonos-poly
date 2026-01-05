@@ -38,6 +38,7 @@
                 <cmd id="JOIN">
                     <p id="" editor="speakers" init="" />
                 </cmd>
+                <cmd id="UNJOIN" />
                 <cmd id="PLAY" />
                 <cmd id="PAUSE" />
                 <cmd id="STOP" />
