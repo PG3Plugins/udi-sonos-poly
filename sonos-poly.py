@@ -148,7 +148,7 @@ class Controller(udi_interface.Node):
                     if addit:
                         sonos_name = self.get_valid_node_name(cfgd['name'])
                         sonos_ip = self.get_valid_node_name(cfgd['host'])
-                        self.join_mapping[idx] = sonos_name
+                        self.join_mapping[idx] = address
                         if not polyglot.getNode(address): 
                             polyglot.addNode(Speaker(polyglot, "sonosctrl", address, sonos_name, sonos_ip))
                         else:
@@ -266,6 +266,9 @@ class Speaker(udi_interface.Node):
         self.update('shortPoll')
         self.reportDrivers()
 
+    def uid(self):
+        return self.zone.uid
+
     def _get_state(self):
         text = self.zone.get_current_transport_info()['current_transport_state'].upper()
         return {
@@ -359,9 +362,10 @@ class Speaker(udi_interface.Node):
             LOGGER.error('join: Invalid argument')
         else:
             parent = self.poly.getNode(self.primary)
-            name = parent.getName(val)
-            LOGGER.error('join to: {} {}'.format(name, val))
-            self.zone.join(name)
+            address = parent.getName(val)
+            master = self.poly.getNode(address)
+            LOGGER.error('join to: {} {}'.format(address, val))
+            self.zone.join(master.uid())
 
     drivers = [{'driver': 'GV1', 'value': 0, 'uom': '56'},
                 {'driver': 'GV2', 'value': 0, 'uom': '56'},
