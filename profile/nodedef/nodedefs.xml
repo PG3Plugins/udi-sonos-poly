@@ -1,49 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <nodeDefs>
-    <!-- NODE DEF from 5.0 document http://wiki.universal-devices.com/index.php?title=V50_MAIN -->
-    <!-- controller -->
-    <nodeDef id="controller" nls="ctl">
-        <editors />
-        <sts>
-            <st id="ST" editor="cst" />
-        </sts>
-        <cmds>
-            <sends />
-            <accepts>
-                <cmd id="DISCOVER" />
-            </accepts>
-        </cmds>
-    </nodeDef>
-    <!-- Sonos Speakers -->
-    <nodeDef id="sonosspeaker" nls="sspk">
-        <editors />
-        <sts>
-            <st id="ST" editor="sstat" />
-            <st id="SVOL" editor="svolume" />
-            <st id="GV1" editor="sinc" />
-            <st id="GV2" editor="sinc" />
-            <st id="GV3" editor="bool" />
-        </sts>
-        <cmds>
-            <sends />
-            <accepts>
-                <cmd id="VOLUME">
-                    <p id="" editor="svolume" init="SVOL" />
-                </cmd	>
-                <cmd id="BASS">
-                    <p id="" editor="sinc" init="GV1" />
-                </cmd	>
-                <cmd id="TREBLE">
-                    <p id="" editor="sinc" init="GV2" />
-                </cmd>
-                <cmd id="PLAY" />
-                <cmd id="PAUSE" />
-                <cmd id="STOP" />
-                <cmd id="PREVIOUS" />
-                <cmd id="NEXT" />
-                <cmd id="MUTE" />
-                <cmd id="UNMUTE" />
-                <cmd id="PARTYMODE" />
-            </accepts>
-        </cmds>
-    </nodeDef>
+  <nodeDef id="sonosCtl" nls="sonosCtl-nls">
+    <editors />
+    <sts>
+      <st id="ST" editor="bool" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="DISCOVER" />
+      </accepts>
+    </cmds>
+  </nodeDef>
+  <nodeDef id="sonosPlayer" nls="sonosPlayer-nls">
+    <editors />
+    <sts>
+      <st id="ST" editor="transport" />
+      <st id="GV0" editor="percent" />
+      <st id="GV1" editor="bool" />
+      <st id="GV2" editor="bool" />
+      <st id="GV3" editor="repeat" />
+      <st id="GV4" editor="bool" />
+      <st id="GV5" editor="source" />
+      <st id="GV6" editor="index" />
+      <st id="GV7" editor="bool" />
+    </sts>
+    <cmds>
+      <sends />
+      <accepts>
+        <cmd id="PLAY" />
+        <cmd id="PAUSE" />
+        <cmd id="STOP" />
+        <cmd id="NEXT" />
+        <cmd id="PREV" />
+        <cmd id="SET_VOL"><p id="GV0" editor="percent" /></cmd>
+        <cmd id="VOL_UP" />
+        <cmd id="VOL_DN" />
+        <cmd id="SET_MUTE"><p id="GV1" editor="bool" /></cmd>
+        <cmd id="TOGGLE_MUTE" />
+        <cmd id="SET_SHUFFLE"><p id="GV2" editor="bool" /></cmd>
+        <cmd id="SET_REPEAT"><p id="GV3" editor="repeat" /></cmd>
+        <cmd id="SET_XFADE"><p id="GV4" editor="bool" /></cmd>
+        <cmd id="JOIN"><p id="ADDR" editor="string" /></cmd>
+        <cmd id="UNJOIN" />
+        <cmd id="PLAY_URI"><p id="URI" editor="string" /></cmd>
+      </accepts>
+    </cmds>
+  </nodeDef>
 </nodeDefs>

@@ -1,18 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <editors>
-    <!-- Boolean -->
-    <editor id="bool">
-        <range uom="2" subset="0,1" />
-    </editor>
-    <editor id="sstat">
-        <range uom="25" subset="0-3" nls="PLAY_MODE" />
-    </editor>
-    <editor id="sinc">
-        <range uom="56" min="-10" max="10" step="1" />
-    </editor>
-    <editor id="svolume">
-        <range uom="51" min="0" max="100" prec="0" />
-    </editor>
-    <editor id="cst">
-        <range uom="25" subset="0,1,2" nls="CST"/>
-    </editor>
+  <editor id="bool"><range uom="2" min="0" max="1" /></editor>
+  <editor id="percent"><range uom="51" min="0" max="100" /></editor>
+  <editor id="transport"><range uom="25" min="0" max="3" /></editor>
+  <editor id="repeat"><range uom="25" min="0" max="2" /></editor>
+  <editor id="source"><range uom="25" min="0" max="5" /></editor>
+  <editor id="index"><range uom="25" min="0" max="999" /></editor>
+  <editor id="string"><range uom="145" /></editor>
 </editors>
