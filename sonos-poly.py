@@ -274,7 +274,7 @@ class Speaker(udi_interface.Node):
 if __name__ == "__main__":
     try:
         polyglot = udi_interface.Interface([])
-        polyglot.start('3.0.2')
+        polyglot.start('3.0.3')
         polyglot.setCustomParamsDoc()
         polyglot.updateProfile()
         Controller(polyglot, "sonosctrl", "sonosctrl", "Sonos Controller")
