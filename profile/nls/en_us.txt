@@ -1,6 +1,6 @@
 # controller
-ND-controller-NAME = Sonos Controller
-ND-controller-ICON = GenericCtl
+ND-sonosCtl-NAME = Sonos Controller
+ND-sonosCtl-ICON = GenericCtl
 ST-ctl-ST-NAME = NodeServer Online
 CMD-ctl-DISCOVER-NAME = Re-Discover
 
@@ -10,8 +10,8 @@ CST-1 = Connected
 CST-2 = Failed
 
 # Sonos Speakers
-ND-sonosspeaker-NAME = Sonos Speaker
-ND-sonosspeaker-ICON = GenericRsp
+ND-sonosPlayer-NAME = Sonos Speaker
+ND-sonosPlayer-ICON = GenericRsp
 ST-sspk-ST-NAME = Status
 ST-sspk-SVOL-NAME = Volume
 ST-sspk-GV1-NAME = Bass

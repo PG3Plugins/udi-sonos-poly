@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nodeDefs>
-  <nodeDef id="sonosCtl" nls="sonosCtl-nls">
+  <nodeDef id="sonosCtl" nls="sonosCtl">
     <editors />
     <sts>
       <st id="ST" editor="bool" />
@@ -12,7 +12,7 @@
       </accepts>
     </cmds>
   </nodeDef>
-  <nodeDef id="sonosPlayer" nls="sonosPlayer-nls">
+  <nodeDef id="sonosPlayer" nls="sonosPlayer">
     <editors />
     <sts>
       <st id="ST" editor="transport" />
