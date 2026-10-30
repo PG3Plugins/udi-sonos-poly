@@ -35,3 +35,18 @@ PLAY_MODE-1 = Transitioning
 PLAY_MODE-2 = Paused
 PLAY_MODE-3 = Stopped
 
+REPEAT_MODE-0 = Normal
+REPEAT_MODE-1 = Repeat all
+REPEAT_MODE-2 = Repeat one
+
+SHUFFLE_Mode-0 = Shuffle no repeat
+SHUFFLE_Mode-1 = Shuffle
+SHUFFLE_Mode-2 = Shuffle repeat one
+
+SOURCE-0 = None
+SOURCE-1 = Queue
+SOURCE-2 = Radio
+SOURCE-3 = TV
+SOURCE-4 = Line in
+SOURCE-5 = Other
+
