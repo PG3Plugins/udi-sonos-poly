@@ -1,7 +1,7 @@
 # controller
 ND-sonosCtl-NAME = Sonos Controller
 ND-sonosCtl-ICON = GenericCtl
-ST-ctl-ST-NAME = NodeServer Online
+ST-sonosCtl-ST-NAME = Plugin Online
 CMD-ctl-DISCOVER-NAME = Re-Discover
 
 # Controller Status
@@ -12,7 +12,15 @@ CST-2 = Failed
 # Sonos Speakers
 ND-sonosPlayer-NAME = Sonos Speaker
 ND-sonosPlayer-ICON = GenericRsp
-ST-sspk-ST-NAME = Status
+ST-SonosPlayer-ST-NAME = Transport State
+ST-SonosPlayer-GV0-NAME = Volume
+ST-SonosPlayer-GV1-NAME = Muted
+ST-SonosPlayer-GV2-NAME = Shuffle
+ST-SonosPlayer-GV3-NAME = Repeat
+ST-SonosPlayer-GV4-NAME = Cross Fade
+ST-SonosPlayer-GV5-NAME = Source
+ST-SonosPlayer-GV6-NAME = Queue
+ST-SonosPlayer-GV7-NAME = Grouped
 ST-sspk-SVOL-NAME = Volume
 ST-sspk-GV1-NAME = Bass
 ST-sspk-GV2-NAME = Treble
