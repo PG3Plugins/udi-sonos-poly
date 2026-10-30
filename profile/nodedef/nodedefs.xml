@@ -41,9 +41,9 @@
         <cmd id="SET_SHUFFLE"><p id="GV2" editor="bool" /></cmd>
         <cmd id="SET_REPEAT"><p id="GV3" editor="repeat" /></cmd>
         <cmd id="SET_XFADE"><p id="GV4" editor="bool" /></cmd>
-        <cmd id="JOIN"><p id="ADDR" editor="string" /></cmd>
+        <cmd id="JOIN"><p id="ADDR" editor="bob" /></cmd>
         <cmd id="UNJOIN" />
-        <cmd id="PLAY_URI"><p id="URI" editor="string" /></cmd>
+        <cmd id="PLAY_URI"><p id="URI" editor="bob" /></cmd>
       </accepts>
     </cmds>
   </nodeDef>

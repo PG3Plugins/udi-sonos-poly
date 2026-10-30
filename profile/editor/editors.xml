@@ -6,5 +6,6 @@
   <editor id="repeat"><range uom="25" min="0" max="2" nls="REPEAT_MODE" /></editor>
   <editor id="source"><range uom="25" min="0" max="5" nls="SOURCE" /></editor>
   <editor id="index"><range uom="25" min="0" max="999" /></editor>
+  <editor id="bob"><range uom="145" min="0" max="10" /></editor>
   <editor id="string"><range uom="145" /></editor>
 </editors>
