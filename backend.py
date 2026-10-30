@@ -151,13 +151,19 @@ def poll_device(dev):
     except Exception:
         pass
 
+    cross_fade = 0
+    try:
+        cross_fade = 1 if dev.cross_fade else 0
+    except Exception:
+        pass
+
     return {
         "transport_state": state,
         "volume": dev.volume,
         "muted": 1 if dev.mute else 0,
         "shuffle": shuffle,
         "repeat": repeat,
-        "crossfade": 1 if dev.cross_fade else 0,
+        "crossfade": cross_fade,
         "source": source,
         "queue_position": _as_int(track.get("playlist_position"), 0),
         "grouped": grouped,
