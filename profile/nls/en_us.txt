@@ -17,6 +17,12 @@ ST-sspk-SVOL-NAME = Volume
 ST-sspk-GV1-NAME = Bass
 ST-sspk-GV2-NAME = Treble
 ST-sspk-GV3-NAME = Muted
+ST-sspk-GV4-NAME = Shuffle
+ST-sspk-GV5-NAME = Repeat
+ST-sspk-GV6-NAME = Cross Fade
+ST-sspk-GV7-NAME = Source
+ST-sspk-GV8-NAME = Queue
+ST-sspk-GV9-NAME = Grouped
 
 CMD-sspk-PLAY-NAME = Play
 CMD-sspk-PAUSE-NAME = Pause
@@ -29,9 +35,26 @@ CMD-sspk-PARTYMODE-NAME = Party Mode
 CMD-sspk-VOLUME-NAME = Volume
 CMD-sspk-BASS-NAME = Bass
 CMD-sspk-TREBLE-NAME = Treble
+CMD-sspk-REPEAT-NAME = Repeat
+CMD-sspk-SHUFFLE-NAME = Shuffle
+CMD-sspk-CROSS_FADE-NAME = Cross Fade
+CMD-sspk-SOURCE-NAME = Source
+CMD-sspk-JOIN-NAME = Join
+CMD-sspk-UNJOIN-NAME = Unjoin
+CMD-sspk-PLAY_URI-NAME = Play URI
 
 PLAY_MODE-0 = Playing
 PLAY_MODE-1 = Transitioning
 PLAY_MODE-2 = Paused
 PLAY_MODE-3 = Stopped
 
+REPEAT-0 = Repeat none
+REPEAT-1 = Repeat all
+REPEAT-2 = Repeat one
+
+SOURCE-0 = None
+SOURCE-1 = Queue
+SOURCE-2 = Radio
+SOURCE-3 = TV
+SOURCE-4 = Line in
+SOURCE-5 = Other

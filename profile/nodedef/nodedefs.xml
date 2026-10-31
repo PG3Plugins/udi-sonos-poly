@@ -22,6 +22,12 @@
             <st id="GV1" editor="sinc" />
             <st id="GV2" editor="sinc" />
             <st id="GV3" editor="bool" />
+            <st id="GV4" editor="bool" />
+            <st id="GV5" editor="repeat" />
+            <st id="GV6" editor="bool" />
+            <st id="GV7" editor="source" />
+            <st id="GV8" editor="sinc" />
+            <st id="GV9" editor="bool" />
         </sts>
         <cmds>
             <sends />
@@ -43,6 +49,19 @@
                 <cmd id="MUTE" />
                 <cmd id="UNMUTE" />
                 <cmd id="PARTYMODE" />
+                <cmd id="SHUFFLE" />
+                <cmd id="CROSS_FADE" />
+                <cmd id="JOIN" />
+                <cmd id="UNJOIN" />
+                <cmd id="REPEAT">
+                    <p id="" editor="repeat" init="GV5" />
+                  </cmd>
+                <cmd id="SOURCE">
+                    <p id="" editor="source" init="GV7" />
+                  </cmd>
+                <cmd id="PLAY_URI">
+                  <p id="" editor="uri" />
+                </cmd>
             </accepts>
         </cmds>
     </nodeDef>

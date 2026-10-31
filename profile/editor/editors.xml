@@ -13,6 +13,15 @@
         <range uom="51" min="0" max="100" prec="0" />
     </editor>
     <editor id="cst">
-        <range uom="25" subset="0,1,2" nls="CST"/>
+        <range uom="25" subset="0,1,2" nls="CST" />
+    </editor>
+    <editor id="repeat">
+        <range uom="25" subset="0,1,2" nls="REPEAT" />
+    </editor>
+    <editor id="source">
+        <range uom="25" subset="0,1,2,3,4,5" nls="SOURCE" />
+    </editor>
+    <editor id="uri">
+        <range uom="150" subset="0,1" />
     </editor>
 </editors>
