@@ -2,7 +2,7 @@
 ND-sonosCtl-NAME = Sonos Controller
 ND-sonosCtl-ICON = GenericCtl
 ST-sonosCtl-ST-NAME = Plugin Online
-CMD-ctl-DISCOVER-NAME = Re-Discover
+CMD-sonosCtl-DISCOVER-NAME = Re-Discover
 
 # Controller Status
 CST-0 = Disconnected
@@ -21,22 +21,22 @@ ST-SonosPlayer-GV4-NAME = Cross Fade
 ST-SonosPlayer-GV5-NAME = Source
 ST-SonosPlayer-GV6-NAME = Queue
 ST-SonosPlayer-GV7-NAME = Grouped
-ST-sspk-SVOL-NAME = Volume
-ST-sspk-GV1-NAME = Bass
-ST-sspk-GV2-NAME = Treble
-ST-sspk-GV3-NAME = Muted
+#ST-sspk-SVOL-NAME = Volume
+#ST-sspk-GV1-NAME = Bass
+#ST-sspk-GV2-NAME = Treble
+#ST-sspk-GV3-NAME = Muted
 
-CMD-sspk-PLAY-NAME = Play
-CMD-sspk-PAUSE-NAME = Pause
-CMD-sspk-STOP-NAME = Stop
-CMD-sspk-PREVIOUS-NAME = Previous
-CMD-sspk-NEXT-NAME = Next
-CMD-sspk-MUTE-NAME = Mute
-CMD-sspk-UNMUTE-NAME = UnMute
-CMD-sspk-PARTYMODE-NAME = Party Mode
-CMD-sspk-VOLUME-NAME = Volume
-CMD-sspk-BASS-NAME = Bass
-CMD-sspk-TREBLE-NAME = Treble
+#CMD-sspk-PLAY-NAME = Play
+#CMD-sspk-PAUSE-NAME = Pause
+#CMD-sspk-STOP-NAME = Stop
+#CMD-sspk-PREVIOUS-NAME = Previous
+#CMD-sspk-NEXT-NAME = Next
+#CMD-sspk-MUTE-NAME = Mute
+#CMD-sspk-UNMUTE-NAME = UnMute
+#CMD-sspk-PARTYMODE-NAME = Party Mode
+#CMD-sspk-VOLUME-NAME = Volume
+#CMD-sspk-BASS-NAME = Bass
+#CMD-sspk-TREBLE-NAME = Treble
 
 PLAY_MODE-0 = Playing
 PLAY_MODE-1 = Transitioning
