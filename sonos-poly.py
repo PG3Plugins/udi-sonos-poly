@@ -164,6 +164,7 @@ class Speaker(udi_interface.Node):
     def __init__(self, polyglot, primary, address, name):
         super().__init__(polyglot, primary, address, 'Sonos {}'.format(name))
         self.device = None
+        self.flip = 0
 
         #polyglot.subscribe(polyglot.START, self.start, address)
         #polyglot.subscribe(polyglot.POLL, self.update)
@@ -192,12 +193,15 @@ class Speaker(udi_interface.Node):
             LOGGER.debug('MEDIA_INFO: {}'.format(state.get('media')))
             LOGGER.debug('TRACK_INFO: {}'.format(state.get('track')))
 
+            if self.flip == 0:
+                self.flip == 1
+
             if state.get('track')['title']:
-                self.setDriver('GV10', 0, text=state.get('track')['title'])
+                self.setDriver('GV10', self.flip, text=state.get('track')['title'])
             if state.get('track')['artist']:
-                self.setDriver('GV11', 0, text=state.get('track')['artist'])
+                self.setDriver('GV11', self.flip, text=state.get('track')['artist'])
             if state.get('track')['album']:
-                self.setDriver('GV12', 0, text=state.get('track')['album'])
+                self.setDriver('GV12', self.flip, text=state.get('track')['album'])
 
 
         except Exception as ex:
