@@ -159,14 +159,18 @@ def poll_device(dev):
 
     media_info = None
     try:
-        media_info = dev.get_current_media_info
-    except Exception:
+        media_info = dev.get_current_media_info()
+        #LOGGER.error('MEDIA: {}'.format(media_info))
+    except Exception as ex:
+        LOGGER.error('get media info failed: {}'.format(ex))
         pass
 
     track_info = None
     try:
-        track_info = dev.get_current_track_info
-    except Exception:
+        track_info = dev.get_current_track_info()
+        #LOGGER.error('TRACK: {}'.format(track_info))
+    except Exception as ex:
+        LOGGER.error('get track info failed: {}'.format(ex))
         pass
 
     return {

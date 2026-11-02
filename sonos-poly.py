@@ -184,14 +184,21 @@ class Speaker(udi_interface.Node):
             LOGGER.error('STATE: {}'.format(state))
             for driver_id, key in self._POLL_MAP.items():
                 if state.get(key) is not None:
-                    LOGGER.error('Setting {} to {}'.format(driver_id, state[key]))
+                    LOGGER.debug('Setting {} to {}'.format(driver_id, state[key]))
                     self.setDriver(driver_id, state[key])
                 else:
                     LOGGER.error('Skipping {} no state info'.format(driver_id))
 
-            #for kicks and grins
-            LOGGER.error('MEDIA_INFO: {}'.format(state.get('media')))
-            LOGGER.error('TRACK_INFO: {}'.format(state.get('track')))
+            LOGGER.debug('MEDIA_INFO: {}'.format(state.get('media')))
+            LOGGER.debug('TRACK_INFO: {}'.format(state.get('track')))
+
+            if state.get('track')['title']:
+                self.setDriver('GV10', 0, text=state.get('track')['title'])
+            if state.get('track')['artist']:
+                self.setDriver('GV11', 0, text=state.get('track')['artist'])
+            if state.get('track')['album']:
+                self.setDriver('GV12', 0, text=state.get('track')['album'])
+
 
         except Exception as ex:
             LOGGER.error('Poll failed for (): ()'.format(self.name, ex), exc_info=True)
@@ -302,6 +309,9 @@ class Speaker(udi_interface.Node):
                {'driver': 'GV7', 'value': 0, 'uom': '25', 'name': 'Source'},
                {'driver': 'GV8', 'value': 0, 'uom': '56', 'name': 'Queue Position'},
                {'driver': 'GV9', 'value': 0, 'uom': '2', 'name': 'Grouped'},
+               {'driver': 'GV10', 'value': 0, 'uom': '2', 'name': 'Title'},
+               {'driver': 'GV11', 'value': 0, 'uom': '2', 'name': 'Artist'},
+               {'driver': 'GV12', 'value': 0, 'uom': '2', 'name': 'Album'},
                ]
 
     commands = {    'PLAY': _play,

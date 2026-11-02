@@ -23,6 +23,9 @@ ST-sspk-GV6-NAME = Cross Fade
 ST-sspk-GV7-NAME = Source
 ST-sspk-GV8-NAME = Queue
 ST-sspk-GV9-NAME = Grouped
+ST-sspk-GV10-NAME = Title
+ST-sspk-GV11-NAME = Artist
+ST-sspk-GV12-NAME = Album
 
 CMD-sspk-PLAY-NAME = Play
 CMD-sspk-PAUSE-NAME = Pause

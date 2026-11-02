@@ -28,6 +28,9 @@
             <st id="GV7" editor="source" />
             <st id="GV8" editor="sinc" />
             <st id="GV9" editor="bool" />
+            <st id="GV10" editor="bool" />
+            <st id="GV11" editor="bool" />
+            <st id="GV12" editor="bool" />
         </sts>
         <cmds>
             <sends />
