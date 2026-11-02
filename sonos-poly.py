@@ -194,9 +194,9 @@ class Speaker(udi_interface.Node):
             LOGGER.debug('TRACK_INFO: {}'.format(state.get('track')))
 
             if self.flip == 0:
-                self.flip == 1
+                self.flip = 1
             else:
-                self.flip == 0
+                self.flip = 0
 
             if state.get('track')['title']:
                 self.setDriver('GV10', self.flip, text=state.get('track')['title'])
