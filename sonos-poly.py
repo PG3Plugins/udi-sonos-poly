@@ -195,6 +195,8 @@ class Speaker(udi_interface.Node):
 
             if self.flip == 0:
                 self.flip == 1
+            else:
+                self.flip == 0
 
             if state.get('track')['title']:
                 self.setDriver('GV10', self.flip, text=state.get('track')['title'])
