@@ -46,10 +46,10 @@ CMD-sspk-JOIN-NAME = Join
 CMD-sspk-UNJOIN-NAME = Unjoin
 CMD-sspk-PLAY_URI-NAME = Play URI
 
-PLAY_MODE-0 = Playing
-PLAY_MODE-1 = Transitioning
+PLAY_MODE-0 = Stopped
+PLAY_MODE-1 = Playing
 PLAY_MODE-2 = Paused
-PLAY_MODE-3 = Stopped
+PLAY_MODE-3 = Transitioning
 
 REPEAT-0 = Repeat none
 REPEAT-1 = Repeat all
